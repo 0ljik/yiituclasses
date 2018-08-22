@@ -41,7 +41,6 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-              '<alias:\w+>' => 'site/<alias>',
             ],
         ],
 

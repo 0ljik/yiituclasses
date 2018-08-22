@@ -66,16 +66,15 @@ class AssetsController extends Controller
      */
     public function actionCreate()
     {
-        $request = Yii::$app->request;
+        //$request = Yii::$app->request;
         $model = new ClassAssets();
-        $mtmModel = new Mtm();
 
-        if($request->isPost){
+    /*    if($request->isPost){
           die(gettype(Yii::$app->request->post()));
           foreach ($request as $key => $value) {
             if()
           }
-        }
+        }*/
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

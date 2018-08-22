@@ -6,11 +6,8 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
-      'classes' => [
+        'classes' => [
             'class' => 'common\modules\classes\Module',
-        ],
-      'credits' => [
-            'class' => 'common\modules\credits\Module'
         ],
     ],
     'components' => [
