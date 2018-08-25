@@ -3,14 +3,14 @@
 namespace common\modules\classes\controllers;
 
 use Yii;
-use common\modules\classes\models\Assign;
-use common\modules\classes\models\AssignSearch;
+use common\modules\classes\models\MtmAssignment;
+use common\modules\classes\models\MtmAssignmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AssignController implements the CRUD actions for Assign model.
+ * AssignController implements the CRUD actions for MtmAssignment model.
  */
 class AssignController extends Controller
 {
@@ -30,12 +30,12 @@ class AssignController extends Controller
     }
 
     /**
-     * Lists all Assign models.
+     * Lists all MtmAssignment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AssignSearch();
+        $searchModel = new MtmAssignmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,30 +45,30 @@ class AssignController extends Controller
     }
 
     /**
-     * Displays a single Assign model.
-     * @param integer $mtm_id
-     * @param integer $user_id
+     * Displays a single MtmAssignment model.
+     * @param integer $mta_mtmc_id
+     * @param integer $mta_user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($mtm_id, $user_id)
+    public function actionView($mta_mtmc_id, $mta_user_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($mtm_id, $user_id),
+            'model' => $this->findModel($mta_mtmc_id, $mta_user_id),
         ]);
     }
 
     /**
-     * Creates a new Assign model.
+     * Creates a new MtmAssignment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Assign();
+        $model = new MtmAssignment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'mtm_id' => $model->mtm_id, 'user_id' => $model->user_id]);
+            return $this->redirect(['view', 'mta_mtmc_id' => $model->mta_mtmc_id, 'mta_user_id' => $model->mta_user_id]);
         }
 
         return $this->render('create', [
@@ -77,19 +77,19 @@ class AssignController extends Controller
     }
 
     /**
-     * Updates an existing Assign model.
+     * Updates an existing MtmAssignment model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $mtm_id
-     * @param integer $user_id
+     * @param integer $mta_mtmc_id
+     * @param integer $mta_user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($mtm_id, $user_id)
+    public function actionUpdate($mta_mtmc_id, $mta_user_id)
     {
-        $model = $this->findModel($mtm_id, $user_id);
+        $model = $this->findModel($mta_mtmc_id, $mta_user_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'mtm_id' => $model->mtm_id, 'user_id' => $model->user_id]);
+            return $this->redirect(['view', 'mta_mtmc_id' => $model->mta_mtmc_id, 'mta_user_id' => $model->mta_user_id]);
         }
 
         return $this->render('update', [
@@ -98,31 +98,31 @@ class AssignController extends Controller
     }
 
     /**
-     * Deletes an existing Assign model.
+     * Deletes an existing MtmAssignment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $mtm_id
-     * @param integer $user_id
+     * @param integer $mta_mtmc_id
+     * @param integer $mta_user_id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($mtm_id, $user_id)
+    public function actionDelete($mta_mtmc_id, $mta_user_id)
     {
-        $this->findModel($mtm_id, $user_id)->delete();
+        $this->findModel($mta_mtmc_id, $mta_user_id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Assign model based on its primary key value.
+     * Finds the MtmAssignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $mtm_id
-     * @param integer $user_id
-     * @return Assign the loaded model
+     * @param integer $mta_mtmc_id
+     * @param integer $mta_user_id
+     * @return MtmAssignment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($mtm_id, $user_id)
+    protected function findModel($mta_mtmc_id, $mta_user_id)
     {
-        if (($model = Assign::findOne(['mtm_id' => $mtm_id, 'user_id' => $user_id])) !== null) {
+        if (($model = MtmAssignment::findOne(['mta_mtmc_id' => $mta_mtmc_id, 'mta_user_id' => $mta_user_id])) !== null) {
             return $model;
         }
 

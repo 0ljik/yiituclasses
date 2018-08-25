@@ -18,8 +18,8 @@ class ClassSubjectsSearch extends ClassSubjects
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'start', 'end', 'body'], 'safe'],
+            [['casu_id'], 'integer'],
+            [['casu_name', 'casu_start', 'casu_end', 'casu_body'], 'safe'],
         ];
     }
 
@@ -59,13 +59,13 @@ class ClassSubjectsSearch extends ClassSubjects
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'start' => $this->start,
-            'end' => $this->end,
+            'casu_id' => $this->casu_id,
+            'casu_start' => $this->casu_start,
+            'casu_end' => $this->casu_end,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'body', $this->body]);
+        $query->andFilterWhere(['like', 'casu_name', $this->casu_name])
+            ->andFilterWhere(['like', 'casu_body', $this->casu_body]);
 
         return $dataProvider;
     }

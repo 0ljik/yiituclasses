@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\modules\classes\models\Assign */
+/* @var $model common\modules\classes\models\MtmAssignment */
 
-$this->title = Yii::t('classes', 'Create Assign');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('classes', 'Assigns'), 'url' => ['index']];
+$this->title = Yii::t('classes', 'Create Mtm Assignment');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('classes', 'Mtm Assignments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="assign-create">
+<div class="mtm-assignment-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

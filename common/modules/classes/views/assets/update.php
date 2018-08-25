@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model common\modules\classes\models\ClassAssets */
 
 $this->title = Yii::t('classes', 'Update Class Assets: {nameAttribute}', [
-    'nameAttribute' => $model->title,
+    'nameAttribute' => $model->cas_id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('classes', 'Class Assets'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->cas_id, 'url' => ['view', 'id' => $model->cas_id]];
 $this->params['breadcrumbs'][] = Yii::t('classes', 'Update');
 ?>
 <div class="class-assets-update">

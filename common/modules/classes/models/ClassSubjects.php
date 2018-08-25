@@ -7,13 +7,13 @@ use Yii;
 /**
  * This is the model class for table "class_subjects".
  *
- * @property int $id
- * @property string $name
- * @property string $start
- * @property string $end
- * @property string $body
+ * @property int $casu_id
+ * @property string $casu_name
+ * @property string $casu_start
+ * @property string $casu_end
+ * @property string $casu_body
  *
- * @property Mtm[] $mtm
+ * @property MtmClass[] $mtmClasses
  */
 class ClassSubjects extends \yii\db\ActiveRecord
 {
@@ -31,10 +31,10 @@ class ClassSubjects extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['start', 'end'], 'required'],
-            [['start', 'end'], 'safe'],
-            [['body'], 'string'],
-            [['name'], 'string', 'max' => 50],
+            [['casu_start', 'casu_end'], 'required'],
+            [['casu_start', 'casu_end'], 'safe'],
+            [['casu_body'], 'string'],
+            [['casu_name'], 'string', 'max' => 50],
         ];
     }
 
@@ -44,20 +44,20 @@ class ClassSubjects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('classes', 'ID'),
-            'name' => Yii::t('classes', 'Name'),
-            'start' => Yii::t('classes', 'Start'),
-            'end' => Yii::t('classes', 'End'),
-            'body' => Yii::t('classes', 'Body'),
+            'casu_id' => Yii::t('classes', 'Casu ID'),
+            'casu_name' => Yii::t('classes', 'Casu Name'),
+            'casu_start' => Yii::t('classes', 'Casu Start'),
+            'casu_end' => Yii::t('classes', 'Casu End'),
+            'casu_body' => Yii::t('classes', 'Casu Body'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMtm()
+    public function getMtmClasses()
     {
-        return $this->hasMany(Mtm::className(), ['class_subject_id' => 'id']);
+        return $this->hasMany(MtmClass::className(), ['mtm_class_subject_id' => 'casu_id']);
     }
 
     /**

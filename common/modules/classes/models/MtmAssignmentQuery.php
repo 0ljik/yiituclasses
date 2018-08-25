@@ -3,11 +3,11 @@
 namespace common\modules\classes\models;
 
 /**
- * This is the ActiveQuery class for [[Assign]].
+ * This is the ActiveQuery class for [[MtmAssignment]].
  *
- * @see Assign
+ * @see MtmAssignment
  */
-class AssignQuery extends \yii\db\ActiveQuery
+class MtmAssignmentQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class AssignQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Assign[]|array
+     * @return MtmAssignment[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class AssignQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Assign|array|null
+     * @return MtmAssignment|array|null
      */
     public function one($db = null)
     {

@@ -18,8 +18,8 @@ class SubjectsSearch extends Subjects
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['su_id'], 'integer'],
+            [['su_name'], 'safe'],
         ];
     }
 
@@ -59,10 +59,10 @@ class SubjectsSearch extends Subjects
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'su_id' => $this->su_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'su_name', $this->su_name]);
 
         return $dataProvider;
     }

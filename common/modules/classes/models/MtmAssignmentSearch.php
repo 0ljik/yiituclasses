@@ -5,12 +5,12 @@ namespace common\modules\classes\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\modules\classes\models\Assign;
+use common\modules\classes\models\MtmAssignment;
 
 /**
- * AssignSearch represents the model behind the search form of `common\modules\classes\models\Assign`.
+ * MtmAssignmentSearch represents the model behind the search form of `common\modules\classes\models\MtmAssignment`.
  */
-class AssignSearch extends Assign
+class MtmAssignmentSearch extends MtmAssignment
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class AssignSearch extends Assign
     public function rules()
     {
         return [
-            [['mtm_id', 'user_id'], 'integer'],
+            [['mta_mtmc_id', 'mta_user_id'], 'integer'],
         ];
     }
 
@@ -40,7 +40,7 @@ class AssignSearch extends Assign
      */
     public function search($params)
     {
-        $query = Assign::find();
+        $query = MtmAssignment::find();
 
         // add conditions that should always apply here
 
@@ -58,8 +58,8 @@ class AssignSearch extends Assign
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'mtm_id' => $this->mtm_id,
-            'user_id' => $this->user_id,
+            'mta_mtmc_id' => $this->mta_mtmc_id,
+            'mta_user_id' => $this->mta_user_id,
         ]);
 
         return $dataProvider;

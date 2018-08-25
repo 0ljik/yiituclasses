@@ -8,8 +8,6 @@ use common\modules\classes\models\ClassAssetsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use common\modules\classes\models\Mtm;
-use common\modules\classes\models\MtmController;
 
 /**
  * AssetsController implements the CRUD actions for ClassAssets model.
@@ -66,19 +64,10 @@ class AssetsController extends Controller
      */
     public function actionCreate()
     {
-        //$request = Yii::$app->request;
         $model = new ClassAssets();
 
-    /*    if($request->isPost){
-          die(gettype(Yii::$app->request->post()));
-          foreach ($request as $key => $value) {
-            if()
-          }
-        }*/
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->cas_id]);
         }
 
         return $this->render('create', [
@@ -98,7 +87,7 @@ class AssetsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->cas_id]);
         }
 
         return $this->render('update', [

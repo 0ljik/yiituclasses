@@ -18,7 +18,7 @@ class MtmSearch extends Mtm
     public function rules()
     {
         return [
-            [['id', 'group_id', 'subject_id', 'class_subject_id', 'class_assets_id'], 'integer'],
+            [['mtm_id', 'mtm_group_id', 'mtm_subject_id', 'mtm_class_subject_id', 'mtm_class_assets_id'], 'integer'],
         ];
     }
 
@@ -58,11 +58,11 @@ class MtmSearch extends Mtm
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'group_id' => $this->group_id,
-            'subject_id' => $this->subject_id,
-            'class_subject_id' => $this->class_subject_id,
-            'class_assets_id' => $this->class_assets_id,
+            'mtm_id' => $this->mtm_id,
+            'mtm_group_id' => $this->mtm_group_id,
+            'mtm_subject_id' => $this->mtm_subject_id,
+            'mtm_class_subject_id' => $this->mtm_class_subject_id,
+            'mtm_class_assets_id' => $this->mtm_class_assets_id,
         ]);
 
         return $dataProvider;

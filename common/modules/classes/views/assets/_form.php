@@ -12,13 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'cas_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'cas_body')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'start')->textInput() ?>
+    <?= $form->field($model, 'cas_start_time')->textInput() ?>
 
-    <?= $form->field($model, 'end')->textInput() ?>
+    <?= $form->field($model, 'cas_end_time')->textInput() ?>
 
     <?= $form->field($model, 'author_id')->textInput() ?>
 

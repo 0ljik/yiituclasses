@@ -7,8 +7,8 @@ use Yii;
 /**
  * This is the model class for table "subjects".
  *
- * @property int $id
- * @property string $name
+ * @property int $su_id
+ * @property string $su_name
  *
  * @property MtmClass[] $mtmClasses
  */
@@ -28,7 +28,7 @@ class Subjects extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string', 'max' => 50],
+            [['su_name'], 'string', 'max' => 50],
         ];
     }
 
@@ -38,8 +38,8 @@ class Subjects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('classes', 'ID'),
-            'name' => Yii::t('classes', 'Name'),
+            'su_id' => Yii::t('classes', 'Su ID'),
+            'su_name' => Yii::t('classes', 'Su Name'),
         ];
     }
 
@@ -48,7 +48,7 @@ class Subjects extends \yii\db\ActiveRecord
      */
     public function getMtmClasses()
     {
-        return $this->hasMany(MtmClass::className(), ['subject_id' => 'id']);
+        return $this->hasMany(MtmClass::className(), ['mtm_subject_id' => 'su_id']);
     }
 
     /**

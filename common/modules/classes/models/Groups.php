@@ -7,8 +7,8 @@ use Yii;
 /**
  * This is the model class for table "groups".
  *
- * @property int $id
- * @property string $name
+ * @property int $group_id
+ * @property string $group_name
  *
  * @property MtmClass[] $mtmClasses
  */
@@ -28,7 +28,7 @@ class Groups extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string', 'max' => 50],
+            [['group_name'], 'string', 'max' => 50],
         ];
     }
 
@@ -38,8 +38,8 @@ class Groups extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('classes', 'ID'),
-            'name' => Yii::t('classes', 'Name'),
+            'group_id' => Yii::t('classes', 'Group ID'),
+            'group_name' => Yii::t('classes', 'Group Name'),
         ];
     }
 
@@ -48,7 +48,7 @@ class Groups extends \yii\db\ActiveRecord
      */
     public function getMtmClasses()
     {
-        return $this->hasMany(MtmClass::className(), ['group_id' => 'id']);
+        return $this->hasMany(MtmClass::className(), ['mtm_group_id' => 'group_id']);
     }
 
     /**

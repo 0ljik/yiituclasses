@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\modules\classes\models\AssignSearch */
+/* @var $model common\modules\classes\models\MtmAssignmentSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="assign-search">
+<div class="mtm-assignment-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -18,9 +18,9 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'mtm_id') ?>
+    <?= $form->field($model, 'mta_mtmc_id') ?>
 
-    <?= $form->field($model, 'user_id') ?>
+    <?= $form->field($model, 'mta_user_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('classes', 'Search'), ['class' => 'btn btn-primary']) ?>

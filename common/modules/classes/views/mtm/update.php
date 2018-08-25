@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model common\modules\classes\models\Mtm */
 
 $this->title = Yii::t('classes', 'Update Mtm: {nameAttribute}', [
-    'nameAttribute' => $model->group_id,
+    'nameAttribute' => $model->mtm_group_id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('classes', 'Mtms'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->group_id, 'url' => ['view', 'group_id' => $model->group_id, 'subject_id' => $model->subject_id, 'class_subject_id' => $model->class_subject_id, 'class_assets_id' => $model->class_assets_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->mtm_group_id, 'url' => ['view', 'mtm_group_id' => $model->mtm_group_id, 'mtm_subject_id' => $model->mtm_subject_id, 'mtm_class_subject_id' => $model->mtm_class_subject_id, 'mtm_class_assets_id' => $model->mtm_class_assets_id]];
 $this->params['breadcrumbs'][] = Yii::t('classes', 'Update');
 ?>
 <div class="mtm-update">

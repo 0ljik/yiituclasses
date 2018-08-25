@@ -18,15 +18,15 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'cas_id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'cas_title') ?>
 
-    <?= $form->field($model, 'body') ?>
+    <?= $form->field($model, 'cas_body') ?>
 
-    <?= $form->field($model, 'start') ?>
+    <?= $form->field($model, 'cas_start_time') ?>
 
-    <?= $form->field($model, 'end') ?>
+    <?= $form->field($model, 'cas_end_time') ?>
 
     <?php // echo $form->field($model, 'author_id') ?>
 

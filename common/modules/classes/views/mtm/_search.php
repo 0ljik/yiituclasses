@@ -18,15 +18,15 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'mtm_id') ?>
 
-    <?= $form->field($model, 'group_id') ?>
+    <?= $form->field($model, 'mtm_group_id') ?>
 
-    <?= $form->field($model, 'subject_id') ?>
+    <?= $form->field($model, 'mtm_subject_id') ?>
 
-    <?= $form->field($model, 'class_subject_id') ?>
+    <?= $form->field($model, 'mtm_class_subject_id') ?>
 
-    <?= $form->field($model, 'class_assets_id') ?>
+    <?= $form->field($model, 'mtm_class_assets_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('classes', 'Search'), ['class' => 'btn btn-primary']) ?>

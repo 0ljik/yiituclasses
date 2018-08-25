@@ -8,15 +8,15 @@ use common\models\User;
 /**
  * This is the model class for table "class_assets".
  *
- * @property int $id
- * @property string $title
- * @property string $body
- * @property string $start this!
- * @property string $end
+ * @property int $cas_id
+ * @property string $cas_title
+ * @property string $cas_body
+ * @property string $cas_start_time this!
+ * @property string $cas_end_time
  * @property int $author_id autoadd
  *
  * @property User $author
- * @property Mtm[] $Mtm
+ * @property MtmClass[] $mtmClasses
  */
 class ClassAssets extends \yii\db\ActiveRecord
 {
@@ -34,10 +34,10 @@ class ClassAssets extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['body'], 'string'],
-            [['start', 'end'], 'safe'],
+            [['cas_body'], 'string'],
+            [['cas_start_time', 'cas_end_time'], 'safe'],
             [['author_id'], 'integer'],
-            [['title'], 'string', 'max' => 50],
+            [['cas_title'], 'string', 'max' => 50],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
         ];
     }
@@ -48,11 +48,11 @@ class ClassAssets extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('classes', 'ID'),
-            'title' => Yii::t('classes', 'Title'),
-            'body' => Yii::t('classes', 'Body'),
-            'start' => Yii::t('classes', 'Start'),
-            'end' => Yii::t('classes', 'End'),
+            'cas_id' => Yii::t('classes', 'Cas ID'),
+            'cas_title' => Yii::t('classes', 'Cas Title'),
+            'cas_body' => Yii::t('classes', 'Cas Body'),
+            'cas_start_time' => Yii::t('classes', 'Cas Start Time'),
+            'cas_end_time' => Yii::t('classes', 'Cas End Time'),
             'author_id' => Yii::t('classes', 'Author ID'),
         ];
     }
@@ -68,9 +68,9 @@ class ClassAssets extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMtm()
+    public function getMtmClasses()
     {
-        return $this->hasMany(Mtm::className(), ['class_assets_id' => 'id']);
+        return $this->hasMany(MtmClass::className(), ['mtm_class_assets_id' => 'cas_id']);
     }
 
     /**

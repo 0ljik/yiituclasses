@@ -18,8 +18,8 @@ class ClassAssetsSearch extends ClassAssets
     public function rules()
     {
         return [
-            [['id', 'author_id'], 'integer'],
-            [['title', 'body', 'start', 'end'], 'safe'],
+            [['cas_id', 'author_id'], 'integer'],
+            [['cas_title', 'cas_body', 'cas_start_time', 'cas_end_time'], 'safe'],
         ];
     }
 
@@ -59,14 +59,14 @@ class ClassAssetsSearch extends ClassAssets
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'start' => $this->start,
-            'end' => $this->end,
+            'cas_id' => $this->cas_id,
+            'cas_start_time' => $this->cas_start_time,
+            'cas_end_time' => $this->cas_end_time,
             'author_id' => $this->author_id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'body', $this->body]);
+        $query->andFilterWhere(['like', 'cas_title', $this->cas_title])
+            ->andFilterWhere(['like', 'cas_body', $this->cas_body]);
 
         return $dataProvider;
     }

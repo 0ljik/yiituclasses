@@ -3,23 +3,22 @@
 namespace common\modules\classes\models;
 
 use Yii;
-use common\models\User;
 
 /**
  * This is the model class for table "mtm_class".
  *
- * @property int $id
- * @property int $group_id
- * @property int $subject_id
- * @property int $class_subject_id
- * @property int $class_assets_id
+ * @property int $mtm_id
+ * @property int $mtm_group_id
+ * @property int $mtm_subject_id
+ * @property int $mtm_class_subject_id
+ * @property int $mtm_class_assets_id
  *
- * @property Assignment[] $Assignment
- * @property User[] $users
- * @property ClassAssets $classAssets
- * @property ClassSubjects $classSubject
- * @property Groups $group
- * @property Subjects $subject
+ * @property MtmAssignment[] $mtmAssignments
+ * @property User[] $mtaUsers
+ * @property ClassAssets $mtmClassAssets
+ * @property ClassSubjects $mtmClassSubject
+ * @property Groups $mtmGroup
+ * @property Subjects $mtmSubject
  */
 class Mtm extends \yii\db\ActiveRecord
 {
@@ -37,13 +36,13 @@ class Mtm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['group_id', 'subject_id', 'class_subject_id', 'class_assets_id'], 'required'],
-            [['group_id', 'subject_id', 'class_subject_id', 'class_assets_id'], 'integer'],
-            [['group_id', 'subject_id', 'class_subject_id', 'class_assets_id'], 'unique', 'targetAttribute' => ['group_id', 'subject_id', 'class_subject_id', 'class_assets_id']],
-            [['class_assets_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClassAssets::className(), 'targetAttribute' => ['class_assets_id' => 'id']],
-            [['class_subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClassSubjects::className(), 'targetAttribute' => ['class_subject_id' => 'id']],
-            [['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Groups::className(), 'targetAttribute' => ['group_id' => 'id']],
-            [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subjects::className(), 'targetAttribute' => ['subject_id' => 'id']],
+            [['mtm_group_id', 'mtm_subject_id', 'mtm_class_subject_id', 'mtm_class_assets_id'], 'required'],
+            [['mtm_group_id', 'mtm_subject_id', 'mtm_class_subject_id', 'mtm_class_assets_id'], 'integer'],
+            [['mtm_group_id', 'mtm_subject_id', 'mtm_class_subject_id', 'mtm_class_assets_id'], 'unique', 'targetAttribute' => ['mtm_group_id', 'mtm_subject_id', 'mtm_class_subject_id', 'mtm_class_assets_id']],
+            [['mtm_class_assets_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClassAssets::className(), 'targetAttribute' => ['mtm_class_assets_id' => 'cas_id']],
+            [['mtm_class_subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClassSubjects::className(), 'targetAttribute' => ['mtm_class_subject_id' => 'casu_id']],
+            [['mtm_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => Groups::className(), 'targetAttribute' => ['mtm_group_id' => 'group_id']],
+            [['mtm_subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subjects::className(), 'targetAttribute' => ['mtm_subject_id' => 'su_id']],
         ];
     }
 
@@ -53,60 +52,60 @@ class Mtm extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('classes', 'ID'),
-            'group_id' => Yii::t('classes', 'Group ID'),
-            'subject_id' => Yii::t('classes', 'Subject ID'),
-            'class_subject_id' => Yii::t('classes', 'Class Subject ID'),
-            'class_assets_id' => Yii::t('classes', 'Class Assets ID'),
+            'mtm_id' => Yii::t('classes', 'Mtm ID'),
+            'mtm_group_id' => Yii::t('classes', 'Mtm Group ID'),
+            'mtm_subject_id' => Yii::t('classes', 'Mtm Subject ID'),
+            'mtm_class_subject_id' => Yii::t('classes', 'Mtm Class Subject ID'),
+            'mtm_class_assets_id' => Yii::t('classes', 'Mtm Class Assets ID'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAssignment()
+    public function getMtmAssignments()
     {
-        return $this->hasMany(Assignment::className(), ['mtm_id' => 'id']);
+        return $this->hasMany(MtmAssignment::className(), ['mta_mtmc_id' => 'mtm_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getMtaUsers()
     {
-        return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('mtm_assignment', ['mtm_id' => 'id']);
+        return $this->hasMany(User::className(), ['id' => 'mta_user_id'])->viaTable('mtm_assignment', ['mta_mtmc_id' => 'mtm_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getClassAssets()
+    public function getMtmClassAssets()
     {
-        return $this->hasOne(ClassAssets::className(), ['id' => 'class_assets_id']);
+        return $this->hasOne(ClassAssets::className(), ['cas_id' => 'mtm_class_assets_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getClassSubject()
+    public function getMtmClassSubject()
     {
-        return $this->hasOne(ClassSubjects::className(), ['id' => 'class_subject_id']);
+        return $this->hasOne(ClassSubjects::className(), ['casu_id' => 'mtm_class_subject_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getGroup()
+    public function getMtmGroup()
     {
-        return $this->hasOne(Groups::className(), ['id' => 'group_id']);
+        return $this->hasOne(Groups::className(), ['group_id' => 'mtm_group_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSubject()
+    public function getMtmSubject()
     {
-        return $this->hasOne(Subjects::className(), ['id' => 'subject_id']);
+        return $this->hasOne(Subjects::className(), ['su_id' => 'mtm_subject_id']);
     }
 
     /**
